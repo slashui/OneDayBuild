@@ -25,11 +25,11 @@ export default function RootLayout({ children, params }) {
     <html lang={locale}>
       <body className={inter.className}>
       <Providers> 
-      <div className="flex w-full">
-      <div className="w-[310px] lg:block hidden bg-zinc-800">
+      <div className="flex flex-row w-full h-screen">
+      <div className="w-[250px] md:block hidden flex-none">
           <Aside />
-          </div>
-          <div className="flex-grow lg:w-auto w-full bg-zinc-800">
+      </div>
+          <div className="flex-1  w-full bg-zinc-200 dark:bg-black">
             <Header /> 
             {/* <ThemeSwitcher /> */}
             <div className="pt-20 h-auto " >

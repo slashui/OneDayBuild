@@ -1,14 +1,19 @@
 "use client";
 import { useTheme } from "next-themes";
+import React, { useState } from 'react';
 
 const ThemeSwitcher = () => { 
     const { theme, setTheme } = useTheme();
-
+    const toggleTheme = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+      };
     return(
         <div>
-            The current theme is: {theme}
-            <button onClick={() => setTheme("light")}>Light Mode</button>
-            <button onClick={() =>setTheme("dark")}>Dark Mode</button>
+            {theme === 'dark' ? (
+                <button onClick={toggleTheme}><img src="/icon/sun.svg" width="25px" /></button>
+            ) : (
+                <button onClick={toggleTheme}><img src="/icon/moon.svg" width="25px" /></button>
+            )}
         </div>
     );
 };

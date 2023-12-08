@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { useLocale } from "next-intl";
 import { notFound } from "next/navigation";
+import Provider from './context/AuthContext';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function RootLayout({ children, params }) {
   }
   return (
     <html lang={locale}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}><Provider>{children}</Provider></body>
     </html>
   )
 }

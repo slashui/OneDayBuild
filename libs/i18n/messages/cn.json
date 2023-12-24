@@ -1,0 +1,19 @@
+{
+    "Index": {
+      "title": "你好啊",
+      "subtitle": "这里写的都是中文"
+     
+    },
+    "Menu": {
+      "Dashboard": "首页",
+      "Search": "搜索",
+      "Insights": "洞察",
+      "Docs": "文档",
+      "Products": "产品",
+      "Settings": "设置",
+      "Messages": "消息",
+      "Account": "账户信息"
+
+    }
+  }
+  

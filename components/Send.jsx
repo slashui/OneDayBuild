@@ -5,9 +5,11 @@ import { useState } from 'react'
 const send = () => {
 
     const [data, setData] = useState({
-        
+        name: "",
         email: "slashui@Live.cn",
-        OTP:"3456"
+        phone: "",
+        subject: "OneDay Build Password Reset",
+        message: "Hello,<div style='color:red'>Hello</div>",
     });
 
     const sendEmail = async (e) => {
@@ -21,7 +23,13 @@ const send = () => {
         });
         if (response.status === 200) {
             alert("Message Sent.");
-            
+            setData({
+                name: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: '',
+              });
         }
     }
   return (

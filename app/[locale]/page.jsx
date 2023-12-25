@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import User from '../../components/User';
+import Send from '@/components/Send';
 
 
 
@@ -23,10 +24,12 @@ export default function Home() {
       console.error('Error fetching session:', error);
     }
   }
+  
 
   fetchAndPrintSession();
   return (
     <div>
+      <Send />
       <div id='sessionInfo'></div>
     <div>
       <p>{t("title")}</p>

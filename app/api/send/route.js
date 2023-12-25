@@ -1,3 +1,4 @@
+import EmailTemplate from '@/components/EmailTemplate';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
@@ -16,7 +17,7 @@ export async function POST(request) {
       from: 'Acme <onboarding@loveai.guru>',
       to: email,
       subject: subject,
-      react: message,
+      react: EmailTemplate,
     });
     console.log("Hello");
     console.log(data);

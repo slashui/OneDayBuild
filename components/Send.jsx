@@ -9,7 +9,8 @@ const send = () => {
         email: "slashui@Live.cn",
         phone: "",
         subject: "OneDay Build Password Reset",
-        message: "Hello,<div style='color:red'>Hello</div>",
+        message: "Hello",
+        OTP:"123"
     });
 
     const sendEmail = async (e) => {

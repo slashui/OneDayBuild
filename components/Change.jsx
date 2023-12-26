@@ -5,7 +5,14 @@ import { useState } from 'react'
 
 const ChangeM =  () => {
     const { setEmail, setPage, email, setOTP } = useContext(RecoveryContext) 
-
+    const [data, setData] = useState({
+        name: "",
+        email: email,
+        phone: "",
+        subject: "OneDay Build Password Reset",
+        message: "Hello",
+        OTP:""
+    });
     const nagigateToOtp = async (e) => {
 
         
@@ -15,12 +22,14 @@ const ChangeM =  () => {
             console.log(OTP)
             alert(OTP)
             setOTP(OTP)
+            setData.OTP(OTP)
+            console.log(data)
             const response = await fetch("/api/send", {
                 method: "POST",
                 headers: {
                         "Content-type": "application/json",
                 },
-                body: JSON.stringify({ email, OTP })
+                body: JSON.stringify(data)
                 
         });
             

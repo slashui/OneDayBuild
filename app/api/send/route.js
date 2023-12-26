@@ -6,19 +6,16 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
-    const OTP = 123456;
-    console.log("Hello");
-    console.log(request);
+
+    console.log("request:", request);
     const body = await request.json();   
-    const { email, subject, message  } = body;
-    console.log(body);
-    console.log(email);
-    console.log(message);
+    const {  email, OTP  } = body;
+    
     const data = await resend.emails.send({
       from: 'Acme <onboarding@loveai.guru>',
       to: email,
       subject: subject,
-      react: EmailTemplate({OTP}),
+      react: EmailTemplate({name,OTP}),
     });
     console.log("Hello");
     console.log(data);

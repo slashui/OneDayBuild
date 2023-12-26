@@ -6,28 +6,26 @@ import { useState } from 'react'
 const ChangeM =  () => {
     const { setEmail, setPage, email, setOTP } = useContext(RecoveryContext) 
 
-    const [temail, setTemail] = useState('');
     const nagigateToOtp = async (e) => {
-        console.log("temail",temail)
-        setEmail(temail);
+
         
         e.preventDefault();
         const OTP = Math.floor(Math.random() * 9000 + 1000);
-        console.log("email",email)
-        console.log(OTP)
-        alert(OTP)
-        setOTP(OTP)
-        const response = await fetch("/api/send", {
-          method: "POST",
-          headers: {
-              "Content-type": "application/json",
-          },
-          body: JSON.stringify(email, OTP),
-          
-      });
-       
-        console.log(response)
-        setPage("otp")
+            console.log("email",email)
+            console.log(OTP)
+            alert(OTP)
+            setOTP(OTP)
+            const response = await fetch("/api/send", {
+                method: "POST",
+                headers: {
+                        "Content-type": "application/json",
+                },
+                body: JSON.stringify({ email, OTP })
+                
+        });
+            
+            console.log(response)
+            setPage("otp")
 
     }
 

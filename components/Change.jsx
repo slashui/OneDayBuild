@@ -22,7 +22,7 @@ const ChangeM =  () => {
             console.log(OTP)
             alert(OTP)
             setOTP(OTP)
-            setData.OTP(OTP)
+            setData({ ...data, OTP: OTP }) 
             console.log(data)
             const response = await fetch("/api/send", {
                 method: "POST",

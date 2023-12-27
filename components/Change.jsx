@@ -11,7 +11,7 @@ const ChangeM =  () => {
         phone: "",
         subject: "OneDay Build Password Reset",
         message: "Hello",
-        OTP:""
+        DataOTP:""
     });
     const nagigateToOtp = async (e) => {
 
@@ -20,9 +20,8 @@ const ChangeM =  () => {
         const OTP = Math.floor(Math.random() * 9000 + 1000);
             console.log("email",email)
             console.log(OTP)
-            alert(OTP)
             setOTP(OTP)
-            setData({ ...data, OTP: OTP }) 
+            setData({ ...data, DataOTP: OTP }) 
             console.log(data)
             const response = await fetch("/api/send", {
                 method: "POST",

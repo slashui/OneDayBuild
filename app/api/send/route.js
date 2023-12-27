@@ -9,13 +9,13 @@ export async function POST(request) {
 
     console.log("request:",request);
     const body = await request.json();   
-    const {  email, subject, OTP  } = body;
+    const {  email, subject, DataOTP  } = body;
     
     const data = await resend.emails.send({
       from: 'Acme <onboarding@loveai.guru>',
       to: email,
       subject: subject,
-      react: EmailTemplate({OTP}),
+      react: EmailTemplate({DataOTP}),
     });
     console.log("Hello");
     console.log(data);

@@ -1,5 +1,6 @@
 "use client"
 import { RecoveryContext } from '@/app/[locale]/(site)/(auth)/change/page'
+import { set } from 'mongoose'
 import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 
@@ -47,7 +48,8 @@ const ChangeM =  () => {
         setData(prevData => ({
           ...prevData,
           email: event.target.value
-        }));  
+        })); 
+        setEmail(event.target.value) 
       }
        
 

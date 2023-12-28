@@ -1,6 +1,5 @@
 "use client"
 import { RecoveryContext } from '@/app/[locale]/(site)/(auth)/change/page'
-
 import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 
@@ -12,6 +11,7 @@ const ChangeM =  () => {
         email: "",
         phone: "",
         subject: "OneDay Build Password Reset",
+        message: "Hello",
         DataOTP:""
     });
 
@@ -23,11 +23,13 @@ const ChangeM =  () => {
         e.preventDefault();
         
         const aOTP = Math.floor(Math.random() * 9000 + 1000);
-
+            console.log("email",email)
+            console.log(aOTP)
             setOTP(aOTP)
+            console.log(otp)
             const updatedData ={ ...data, DataOTP: aOTP }
             console.log("updatedData:",updatedData)
-            setData({ ...data, DataOTP: aOTP })
+            setData({ ...data, DataOTP: abc })
             const response = await fetch("/api/send", {
                 method: "POST",
                 headers: {
@@ -43,13 +45,17 @@ const ChangeM =  () => {
             
     }
 
+    const abc = () => {
+        console.log(data.email)
+
+        
+    }
 
     function handleChange(event) {
         setData(prevData => ({
           ...prevData,
           email: event.target.value
-        })); 
-        setEmail(event.target.value) 
+        }));  
       }
        
 

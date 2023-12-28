@@ -1,13 +1,44 @@
 
 import React, { useContext, useState } from 'react'; 
+import axios from "axios"
+import { toast } from "react-hot-toast"
 import { RecoveryContext } from '@/app/[locale]/(site)/(auth)/change/page';
 
 const Reset = () => {
-    const { setPage } = useContext(RecoveryContext);
-    function changePassword() {
-        
-        setPage('login');
-      }
+    const { email, setPage } = useContext(RecoveryContext);
+
+    const [data, setData] = useState({
+        email: email,
+        password: ''
+        })
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+        setData(prevData => ({
+            ...prevData,
+            password: event.target.value
+          }));
+
+      };
+    
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+
+      };
+      const handleButtonClick = async () => {
+
+        if (password === confirmPassword) {
+            
+                await axios.post('/api/change', data);
+                toast.success('Password has been changed!');
+              
+         
+        } else {
+          toast.error('Passwords do not match!')
+        }
+      };
   return (
 
       <div className='w-2/3 text-white'>
@@ -19,16 +50,16 @@ const Reset = () => {
            <div className="flex flex-col space-y-5">
                <label for="email">
                    <p className="font-medium text-zinc-400 pb-2">New Password</p>
-                   <input id="email" name="email"  type="password" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
+                   <input id="email" name="email" onChange={handlePasswordChange} type="password" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
                </label>
               
               
                <label for="ConfPassword">
                    <p className="font-medium text-zinc-400 pb-2">Confirm Password</p>
-                   <input id="ConfPassword" name="email" type="password" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
+                   <input id="ConfPassword" name="email" type="password" onChange={handleConfirmPasswordChange} className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
                </label>
               
-               <button className="w-full rounded-full py-3 font-medium text-white bg-primary hover:bg-primary/80  border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" onClick={changePassword}>
+               <button className="w-full rounded-full py-3 font-medium text-white bg-primary hover:bg-primary/80  border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" onClick={handleButtonClick}>
                    <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
                      </svg>

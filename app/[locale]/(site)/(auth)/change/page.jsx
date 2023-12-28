@@ -3,6 +3,7 @@ import React from 'react'
 import ChangeM from '@/components/Change';
 import OTPinput from '@/components/OTPinput';
 import Reset from '@/components/Reset';
+import ResetSuccess from '@/components/Reset-Success';
 import { createContext } from 'react';
 import { useState } from 'react';
 
@@ -18,7 +19,7 @@ const Change = () => {
     if (page === "ChangeM") return <ChangeM />;
     if (page === "otp") return <OTPinput />;
     if (page === "reset") return <Reset />;
-    return <Recovered />;
+    return <ResetSuccess />;
   }
   
 

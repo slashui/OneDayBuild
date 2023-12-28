@@ -11,7 +11,6 @@ const ChangeM =  () => {
         email: "",
         phone: "",
         subject: "OneDay Build Password Reset",
-        message: "Hello",
         DataOTP:""
     });
 
@@ -23,10 +22,8 @@ const ChangeM =  () => {
         e.preventDefault();
         
         const aOTP = Math.floor(Math.random() * 9000 + 1000);
-            console.log("email",email)
-            console.log(aOTP)
+
             setOTP(aOTP)
-            console.log(otp)
             const updatedData ={ ...data, DataOTP: aOTP }
             console.log("updatedData:",updatedData)
             setData({ ...data, DataOTP: abc })
@@ -45,11 +42,6 @@ const ChangeM =  () => {
             
     }
 
-    const abc = () => {
-        console.log(data.email)
-
-        
-    }
 
     function handleChange(event) {
         setData(prevData => ({

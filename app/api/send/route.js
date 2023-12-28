@@ -10,16 +10,14 @@ export async function POST(request) {
     console.log("request:",request);
     const body = await request.json();   
     const {  email, subject, DataOTP  } = body;
-    alert(email)
-    alert(DataOTP)
+
     const data = await resend.emails.send({
       from: 'Acme <onboarding@loveai.guru>',
       to: email,
       subject: subject,
       react: EmailTemplate({DataOTP}),
     });
-    console.log("Hello");
-    console.log(data);
+
     return NextResponse.json( data );
   } catch (error) {
     return NextResponse.json({error});

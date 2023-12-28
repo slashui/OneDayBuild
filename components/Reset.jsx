@@ -6,7 +6,7 @@ import { RecoveryContext } from '@/app/[locale]/(site)/(auth)/change/page';
 
 const Reset = () => {
     const { email, setPage } = useContext(RecoveryContext);
-
+    const mmail = "slashui@live.cn"
     const [data, setData] = useState({
         email: email,
         password: ''
@@ -20,29 +20,30 @@ const Reset = () => {
             ...prevData,
             password: event.target.value
           }));
-
+        console.log("password:",password)
       };
     
     const handleConfirmPasswordChange = (event) => {
         setConfirmPassword(event.target.value);
-
+        console.log("ConfirmPassword:",confirmPassword)
       };
       const handleButtonClick = async () => {
-
+        console.log("fonrtend:",data)
         if (password === confirmPassword) {
             
                 await axios.post('/api/change', data);
                 toast.success('Password has been changed!');
-              
+                setPage('success');
          
         } else {
-          toast.error('Passwords do not match!')
+          toast.error('Passwords do not match!');
         }
       };
+
   return (
 
       <div className='w-2/3 text-white'>
-       
+
        <h1 className="text-4xl font-medium">Choose a password</h1>
        <p className="text-zinc-400">Please make sure that the entered passwords match each other.</p>
 
@@ -50,13 +51,13 @@ const Reset = () => {
            <div className="flex flex-col space-y-5">
                <label for="email">
                    <p className="font-medium text-zinc-400 pb-2">New Password</p>
-                   <input id="email" name="email" onChange={handlePasswordChange} type="password" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
+                   <input id="password" name="password" onChange={handlePasswordChange} type="password" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter New Password" />
                </label>
               
               
                <label for="ConfPassword">
                    <p className="font-medium text-zinc-400 pb-2">Confirm Password</p>
-                   <input id="ConfPassword" name="email" type="password" onChange={handleConfirmPasswordChange} className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
+                   <input id="ConfPassword" name="password" type="password" onChange={handleConfirmPasswordChange} className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter Confirm Password" />
                </label>
               
                <button className="w-full rounded-full py-3 font-medium text-white bg-primary hover:bg-primary/80  border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" onClick={handleButtonClick}>

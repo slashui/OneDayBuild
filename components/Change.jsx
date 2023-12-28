@@ -56,6 +56,7 @@ const ChangeM =  () => {
           ...prevData,
           email: event.target.value
         }));  
+        setEmail(event.target.value)
       }
        
 

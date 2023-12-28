@@ -1,50 +1,69 @@
+"use client"
 import { RecoveryContext } from '@/app/[locale]/(site)/(auth)/change/page'
 import React, { useContext } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 const ChangeM =  () => {
-    const { setEmail, setPage, email, setOTP } = useContext(RecoveryContext) 
+    const { setEmail, setPage, email, otp , setOTP } = useContext(RecoveryContext) 
     const [data, setData] = useState({
         name: "",
-        email: email,
+        email: "",
         phone: "",
         subject: "OneDay Build Password Reset",
         message: "Hello",
         DataOTP:""
     });
+
+
+
     const nagigateToOtp = async (e) => {
 
         
         e.preventDefault();
-        const OTP = Math.floor(Math.random() * 9000 + 1000);
+        
+        const aOTP = Math.floor(Math.random() * 9000 + 1000);
             console.log("email",email)
-            console.log(OTP)
-            setOTP(OTP)
-            setData({ ...data, DataOTP: OTP }) 
-            console.log(data)
+            console.log(aOTP)
+            setOTP(aOTP)
+            console.log(otp)
+            const updatedData ={ ...data, DataOTP: aOTP }
+            console.log("updatedData:",updatedData)
+            setData({ ...data, DataOTP: abc })
             const response = await fetch("/api/send", {
                 method: "POST",
                 headers: {
                         "Content-type": "application/json",
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(updatedData)
                 
         });
             
-            console.log(response)
+            
             setPage("otp")
-
+            
+            
     }
 
-    const handleChange = (e) => {
-        setEmail(e.target.value);
-      };
+    const abc = () => {
+        console.log(data.email)
+
+        
+    }
+
+    function handleChange(event) {
+        setData(prevData => ({
+          ...prevData,
+          email: event.target.value
+        }));  
+      }
+       
+
   return (
     
 
        <div className='w-2/3 text-white'>
-
+        
 
        
        <h1 className="text-4xl font-medium">Reset password</h1>
@@ -54,7 +73,7 @@ const ChangeM =  () => {
            <div className="flex flex-col space-y-5">
                <label for="email">
                    <p className="font-medium text-zinc-400 pb-2">Email address</p>
-                   <input id="email" value={email}   name="email" onChange={handleChange} type="email" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
+                   <input id="email" value={data.email} onChange={handleChange}  name="email"  type="email" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
                </label>
               
                <button className="w-full rounded-full py-3 font-medium text-white bg-primary hover:bg-primary/80  border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" onClick={nagigateToOtp}>

@@ -26,7 +26,7 @@ const ChangeM =  () => {
             setOTP(aOTP)
             const updatedData ={ ...data, DataOTP: aOTP }
             console.log("updatedData:",updatedData)
-            setData({ ...data, DataOTP: abc })
+            setData({ ...data, DataOTP: aOTP })
             const response = await fetch("/api/send", {
                 method: "POST",
                 headers: {

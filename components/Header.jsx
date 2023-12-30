@@ -7,12 +7,19 @@ import { useTranslations } from "next-intl";
 import ThemeSwitcher from './ThemeSwitcher';
 import LanguageSwitcher from './LanguageSwitcher';
 import { current } from './LanguageSwitcher'
-
+import { useRouter } from 'next/navigation'
+import { useEffect } from "react";
 
 
 const Header = () => {
-
+  const router = useRouter();
   const { data: session } = useSession()
+  useEffect(() => {
+    // 如果没有会话，则重定向到登录页面
+    if (!session) {
+      router.replace('/login');
+    }
+  }, [session, router]);
   return (
     <nav className="dark:bg-zinc-800 w-full bg-[#F5F6FB]">
     <div className="w-full flex flex-wrap items-center justify-between mx-auto px-10 h-[70px]">

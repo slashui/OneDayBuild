@@ -4,17 +4,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 // import MarkdownPreview from '@uiw/react-markdown-preview';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-
-useEffect(() => {
-    const session = getServerSession(authOptions);
-
-    if (!session) {
-      // 会话不存在或过期，重定向至登录页面
-      router.replace('/login');
-    }
-  }, []);
 
 const CodeBlock = ({ language, value }) => {
     return (

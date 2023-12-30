@@ -15,8 +15,8 @@ export async function POST(request) {
     const { messages, roleprompt } = await request.json(); // { messages: [] }
 
     // messages [{ user and he says "hello there" }]
-    console.log(messages);
-    console.log(roleprompt);
+    console.log("messages:",messages);
+    console.log("roleprompt:",roleprompt);
 
 
     // GPT-4 system message

@@ -13,6 +13,7 @@ export const authOptions = {
         GithubProvider({
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            callbackURL: "https://www.loveai.guru/api/auth/callback/github",
         }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
@@ -91,3 +92,5 @@ export const authOptions = {
 
 const handler = NextAuth(authOptions)
 export { handler as GET, handler as POST}
+
+

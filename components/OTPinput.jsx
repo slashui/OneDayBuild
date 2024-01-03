@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'; 
+import React, { useContext, useState, useRef } from 'react'; 
 import { RecoveryContext } from '@/app/[locale]/(site)/(auth)/change/page'
 import toast from 'react-hot-toast';
+
 
 
 const OTPinput = () => {
@@ -20,6 +21,17 @@ const OTPinput = () => {
         }
       }
 
+      const firstInputRef = useRef(null);
+      const secondInputRef = useRef(null);
+      const thirdInputRef = useRef(null);
+      const fourthInputRef = useRef(null);
+
+      const handleFocusNext = (e, nextInputRef) => {
+        const value = e.target.value;
+        if (value.length === 1 && nextInputRef) {
+          nextInputRef.current.focus();
+        }
+      };
 
   return (
     <div className='w-2/3 text-white'>
@@ -28,7 +40,7 @@ const OTPinput = () => {
 
     <div  className="w-full mt-2 flex justify-center items-center gap-x-2 my-8">
         <div className='w-20 h-20'>
-        <input type="text" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
+        <input type="text" ref={firstInputRef} onInput={(e) => handleFocusNext(e, secondInputRef)} pattern="\d*" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
             onChange={(e) => 
                 setOTPinput([
                     e.target.value,
@@ -41,7 +53,7 @@ const OTPinput = () => {
         />
         </div>
         <div className='w-20 h-20'>
-        <input type="text" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
+        <input type="text" ref={secondInputRef} onInput={(e) => handleFocusNext(e, thirdInputRef)} pattern="\d*" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
             onChange={(e) => 
                 setOTPinput([
                     OTPinput[0],
@@ -54,7 +66,7 @@ const OTPinput = () => {
         />
         </div>
         <div className='w-20 h-20'>
-        <input type="text" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
+        <input type="text" ref={thirdInputRef} onInput={(e) => handleFocusNext(e, fourthInputRef)} pattern="\d*" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
             onChange={(e) => 
                 setOTPinput([
                     OTPinput[0],
@@ -66,7 +78,7 @@ const OTPinput = () => {
         />
         </div>
         <div className='w-20 h-20'>
-        <input type="text" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
+        <input type="text" ref={fourthInputRef} pattern="\d*" maxLength="1" data-index="0" placeholder="0" className="w-20 h-20 rounded-xl border border-zinc-700 bg-black focus:border-zinc-800 outline-none text-center text-4xl"
            onChange={(e) => 
             setOTPinput([
                 OTPinput[0],

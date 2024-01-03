@@ -19,7 +19,8 @@ const Change = () => {
     if (page === "ChangeM") return <ChangeM />;
     if (page === "otp") return <OTPinput />;
     if (page === "reset") return <Reset />;
-    return <ResetSuccess />;
+    if (page === "success") return <ResetSuccess />;
+    
   }
   
 
@@ -29,6 +30,7 @@ const Change = () => {
 
 
    </RecoveryContext.Provider>
+
 
   )
 }

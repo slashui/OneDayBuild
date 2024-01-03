@@ -51,21 +51,17 @@ const ChangeM =  () => {
         
     }
 
-    function handleChange(event) {
-        setData(prevData => ({
-          ...prevData,
-          email: event.target.value
-        }));  
-        setEmail(event.target.value)
-      }
+
        
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setData((prevState) => ({ ...prevState, email: value }));      };
 
   return (
     
 
        <div className='w-2/3 text-white'>
-        
-
        
        <h1 className="text-4xl font-medium">Reset password</h1>
        <p className="text-zinc-400">Please enter the email address you used during registration, and we will send you a verification code.</p>
@@ -74,7 +70,7 @@ const ChangeM =  () => {
            <div className="flex flex-col space-y-5">
                <label for="email">
                    <p className="font-medium text-zinc-400 pb-2">Email address</p>
-                   <input id="email" value={data.email} onChange={handleChange}  name="email"  type="email" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
+                   <input id="email" value={data.email || ''} onChange={handleChange}  name="email"  type="email" className="w-full py-3 border bg-zinc-900 focus:bg-black border-zinc-700 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" />
                </label>
               
                <button className="w-full rounded-full py-3 font-medium text-white bg-primary hover:bg-primary/80  border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center" onClick={nagigateToOtp}>

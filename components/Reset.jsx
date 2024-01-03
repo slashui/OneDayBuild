@@ -5,8 +5,8 @@ import { toast } from "react-hot-toast"
 import { RecoveryContext } from '@/app/[locale]/(site)/(auth)/change/page';
 
 const Reset = () => {
-    const { email, setPage } = useContext(RecoveryContext);
-    const mmail = "slashui@live.cn"
+    // const { email, setPage } = useContext(RecoveryContext);
+    const email = "aa@gmail.com"
     const [data, setData] = useState({
         email: email,
         password: ''
@@ -27,8 +27,9 @@ const Reset = () => {
         setConfirmPassword(event.target.value);
         console.log("ConfirmPassword:",confirmPassword)
       };
-      const handleButtonClick = async () => {
-        console.log("fonrtend:",data)
+      const handleButtonClick = async (event,req, res) => {
+        event.preventDefault(); 
+        try{
         if (password === confirmPassword) {
             
                 await axios.post('/api/change', data);
@@ -38,8 +39,16 @@ const Reset = () => {
         } else {
           toast.error('Passwords do not match!');
         }
-      };
+      }catch (error) {
+        if (error.code === 'P2025') {
+          // Handle the specific error accordingly
+          return res.status(404).json({
+            message: 'Record to update was not found'
+          });
+        }
 
+      };
+    }
   return (
 
       <div className='w-2/3 text-white'>

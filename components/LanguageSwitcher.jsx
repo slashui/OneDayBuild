@@ -16,12 +16,12 @@ const LanguageSwitcher = () => {
       case 'cn':
         src = '/icon/en.svg';
         path = '/en/dashboard';
-        current = 'cn';
+        current = 'CN';
         break;
       case 'en':
         src = '/icon/cn.svg';
         path = '/cn/dashboard';
-        current = 'en';
+        current = 'EN';
         break;
       default:
         src = 'default.svg'; // Just an example, replace with actual default image if necessary
@@ -33,10 +33,11 @@ const LanguageSwitcher = () => {
     setCurrent(current);
   }, []);
   return (
-    <div> 
-      {current}
-       <a href={linkPath}>
-      <img src={imageSrc} width="25px" />
+    <div className="mt-2 flex justify-center items-center  w-12 m-2 h-12 rounded-full border dark:border-zinc-700 border-zinc-200 bg-white dark:bg-zinc-600/20 hover:dark:bg-zinc-600/40 hover:bg-zinc-100"> 
+      
+       <a href={linkPath} className='font-inter text-xl text-zinc-500 dark:text-zinc-200'>
+        {current}
+      {/* <img src={imageSrc} width="25px" className='fill-red-500' /> */}
     </a>
      </div>
   )

@@ -1,7 +1,7 @@
 "use client"
 import { FormEvent, useState } from 'react';
 import EditUser from '@/components/EditUser';
-import settingtest from '@/components/settingtest';
+
 
 
 export default function UserPage({params: {id}}) {

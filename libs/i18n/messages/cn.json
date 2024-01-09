@@ -5,14 +5,51 @@
      
     },
     "Menu": {
-      "Dashboard": "首页",
-      "Search": "搜索",
-      "Insights": "洞察",
-      "Docs": "文档",
-      "Products": "产品",
-      "Settings": "设置",
-      "Messages": "消息",
-      "Account": "账户信息"
+      "Dashboard": "仪表盘",
+      "agentUI": "agentUI",
+      "Assistant": "AI 助手",
+      "Docs": "帮助文档"
+
+    },
+    "agentUI": {
+      "description": "agentUI focuses on AI apps with a library of UI components to help you quickly build your own AI apps",
+      "Inputs": "Inputs",
+      "Cards": "Cards",
+      "Chat": "Chat",
+      "Galley": "Galley",
+      "Froms": "Froms",
+      "Tables": "Tables",
+      "Video": "Video",
+      "Loading": "Loading",
+      "Menu": "Menu",
+      "Layouts": "Layouts",
+      "InputsD": "Prompt Input",
+      "CardsD": "Contents on Cards",
+      "ChatD": "Interactions on Chat",
+      "GalleyD": "Generate image galley",
+      "FromsD": "From Components",
+      "TablesD": "Data presentation",
+      "VideoD": "Video Player",
+      "LoadingD": "Generate Loading",
+      "MenuD": "Side menu",
+      "LayoutsD": "System layouts"
+
+    }
+    ,
+    "AIAssistant": {
+      "assistant": "AI Assistant",
+      "assistantD": "OneDay Build has enlisted 4 AI assistants for you to help you with the difficulties and problems you encounter during the build.",
+      "Specialist": "Specialist",
+      "SpecialistD": "Ask me any questions you have about building with OneDay Build!",
+      "Translation": "Translation",
+      "TranslationD": "If the platform needs to serve the world, she can translate any language.",
+      "Corder": "Corder",
+      "CorderD": "Next.js expert, whether you ask him all kinds of questions about NextJS!",
+      "Writer": "Writer",
+      "WriterD1": "Terms of use",
+      "WriterD2": "License agreement",
+      "WriterD3": "Privacy policy",
+      "WriterD4": "Readme"
 
     }
   }

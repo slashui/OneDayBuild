@@ -12,7 +12,7 @@ const send = () => {
         message: "Hello",
         OTP:"123"
     });
-
+    
     const sendEmail = async (e) => {
         e.preventDefault();
         const response = await fetch("/api/send", {

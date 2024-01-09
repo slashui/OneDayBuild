@@ -45,7 +45,7 @@ export default async function RootLayout({ children, params }) {
 
             <Header locale={locale} />
            
-            <div className='h-full clac'>
+            <div className='h-full clac bg-[#F5F6FB] dark:bg-[#000000]'>
             {children}         
             </div>
           </div>

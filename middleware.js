@@ -1,11 +1,11 @@
 import createMiddleware from 'next-intl/middleware';
- 
+import gconfig from './config';
 export default createMiddleware({
   // A list of all locales that are supported
-  locales: ['en', 'cn'],
+  locales: gconfig.i18n.locales,
  
   // Used when no locale matches
-  defaultLocale: 'en'
+  defaultLocale: gconfig.i18n.defaultLocale
 });
  
 export const config = {

@@ -14,12 +14,7 @@ import { useEffect } from "react";
 const Header = () => {
   const router = useRouter();
   const { data: session } = useSession()
-  // useEffect(() => {
-  //   // 如果没有会话，则重定向到登录页面
-  //   if (!session) {
-  //     router.replace('/cn/login');
-  //   }
-  // }, [session]);
+
   return (
     <nav className="dark:bg-black w-full bg-[#F5F6FB]">
     <div className="w-full flex flex-wrap items-center justify-between mx-auto px-10 h-[55px]">
@@ -31,7 +26,7 @@ const Header = () => {
           </svg>
           <span className="sr-only">Search icon</span>
         </div>
-        <input type="text" id="search-navbar" className="block w-full p-2 pl-10 text-sm text-gray-900 border dark:border-[#000000] border-[#000000] rounded-full dark:bg-gray-50/10 bg-white focus:ring-gray-50 focus:border-gray-50  dark:focus:text-white focus:text-gray-900" placeholder="Search..." />
+        <input type="text" id="search-navbar" className="block w-full h-8 p-2 pl-10 text-sm text-gray-900 border dark:border-[#000000] border-zinc-200 rounded-full dark:bg-gray-50/10 bg-white focus:ring-gray-50 focus:border-gray-50  dark:focus:text-white focus:text-gray-900" placeholder="Search..." />
       </div></div>
       <div>
      
@@ -46,7 +41,7 @@ const Header = () => {
       <div className="flex md:order-2 flex-row relative">
       <ThemeSwitcher />
       <LanguageSwitcher />
-        <div className="flex items-center space-x-4 px-4 py-3 hover:bg-gray-100/10">
+        <div className="flex items-center space-x-2 px-4 py-1 hover:bg-gray-100/10">
           <img className="w-10 h-10 rounded-full" src={session?.user?.image} alt="" />
           <div className="font-medium dark:text-white">
               <Link className='dark:text-white text-zinc-800 underline hover:text-zinc-500' href={`/cn/setting/${session?.user?.id}`}>{session?.user?.name}</Link><br />

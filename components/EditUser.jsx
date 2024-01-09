@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useTranslations } from 'next-intl';
 
-const EditUser = ({userData}) => {
-
+const EditUser = ({ userData, texts }) => {
     const [noteToEdit, setNoteToEdit] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
     const id = userData
-
+    
     const getUser = () => {
       if (id) {
         const fetchData = async () => {
@@ -65,8 +65,7 @@ const EditUser = ({userData}) => {
      
       
       <form onSubmit={handleEditSubmit} className='w-full '>
-        {JSON.stringify(noteToEdit)}
-          
+
 
         <div className='flex flex-row w-full mt-12'>
           <div className='w-2/3 flex flex-row items-center'>
@@ -74,22 +73,22 @@ const EditUser = ({userData}) => {
             <div>
        
           <div class="ml-6">
-          <label for="name" class="block  text-sm font-medium text-gray-900 dark:text-zinc-500">Username</label>
+          <label for="name" class="block  text-sm font-medium text-gray-900 dark:text-zinc-500">{texts.usernameLabel}</label>
          
                 
-                <input type="text" value={noteToEdit.name || ''} onChange={handleChange} id="name" name="name" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder="name@company.com" required="" />
+                <input type="text" value={noteToEdit.name || ''} onChange={handleChange} id="name" name="name" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder={texts.usernameLabel} required="" />
          
            
           </div>
         </div>
           </div>
-          <div className='w-1/3 flex justify-end'><button type="submit" className='bg-primary p-4 text-black rounded-md'>Save</button></div>
+          <div className='w-1/3 flex justify-end'><button type="submit" className='bg-primary p-4 text-black rounded-md'>{texts.saveButton}</button></div>
         </div>
 
         <hr className='my-8 border dark:border-zinc-700 border-zinc-200' />
       
 
-        <label for="email" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+        <label for="email" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">{texts.emailLabel}</label>
           
           <div class="relative mb-6">
                
@@ -97,35 +96,35 @@ const EditUser = ({userData}) => {
             </div>
         
 
-        <label for="homepage" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">HomePage</label>
+        <label for="homepage" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">{texts.homePageLabel}</label>
           
           <div class="relative mb-6">
                
-                <input type="text" value={noteToEdit.homepage || ''} onChange={handleChange} name="homepage" id="homepage" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder="name@company.com" required />
+                <input type="text" value={noteToEdit.homepage || ''} onChange={handleChange} name="homepage" id="homepage" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder={texts.homePageDescription} required />
             </div>
         
 
-        <label for="aboutyou" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">About You</label>
+        <label for="aboutyou" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">{texts.aboutYouLabel}</label>
          
           <div class="relative mb-6">
                 
-                <textarea rows="4" type="text" value={noteToEdit.aboutyou || ''} onChange={handleChange} name="aboutyou" id="aboutyou" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder="name@company.com" required />
+                <textarea rows="4" type="text" value={noteToEdit.aboutyou || ''} onChange={handleChange} name="aboutyou" id="aboutyou" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder={texts.homePageDescription} required />
             </div>
 
-        <label for="githubname" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">Github Name</label>
+        <label for="githubname" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">{texts.githubNameLabel}</label>
           
           <div class="relative mb-6">
                 
-                <input type="text" value={noteToEdit.githubname || ''} onChange={handleChange} id="githubname" name="githubname" aboutyou className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder="name@company.com" required />
+                <input type="text" value={noteToEdit.githubname || ''} onChange={handleChange} id="githubname" name="githubname" aboutyou className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder={texts.githubNameLabel} required />
             </div>
        
 
-        <label for="twittername" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">Twitter Name</label>
+        <label for="twittername" class="block mb-1 mt-4 text-sm font-medium text-gray-900 dark:text-white">{texts.twitterNameLabel}</label>
          
 
           <div class="relative mb-6">
                 
-                <input type="text" value={noteToEdit.twittername || ''} onChange={handleChange} id="twittername" name="twittername" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder="name@company.com" required />
+                <input type="text" value={noteToEdit.twittername || ''} onChange={handleChange} id="twittername" name="twittername" className=" border pl-2 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-zinc-900/50 dark:border-zinc-700 bg-zinc-100 border-zinc-200  placeholder-zinc-500 dark:text-white text-black" placeholder={texts.twitterNameLabel}required />
             </div>
 
         

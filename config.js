@@ -16,19 +16,27 @@ const config = {
   // You can also add more languages use a language translation tool.
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "zh"],
+    locales: ["en", "cn"],
   },
   // Set the theme of the platform, dark or light style. default is dark.
   // Below you can set the base background color and text color for dark and light.This can be a custom color, like: "#f37055". or a tailwindcss style name, like: "bg-primary-500"
   // Set the highlight color of the platform in main, if you think the default value is OK, you can not change it.
   colors: {
-    theme: "light",
-    darkstyle: ["bg-slate-900","text-white"],
-    lightstyle: ["bg-zinc-100","text-zinc-800"],
-    main: "#4f46e5",
+    theme: "dark",
+    primary: "#EBFF00",
   },
   
 
+
+
+
+
+
+
+
+
+
+  
 
   // Here are the settings for the platform features.
   // auth - REQUIRED

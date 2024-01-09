@@ -4,9 +4,13 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import User from '../../components/User';
 import Send from '@/components/Send';
-
-
-
+import ThemeSwitcher from '@/components/ThemeSwitcher';
+import Pricelist from '@/components/Pricelist';
+import FrontHero from '@/components/FrontHero';
+import FrontFeatures from '@/components/FrontFeatures';
+import FrontStepper from '@/components/FrontStepper';
+import FrontAboutme from '@/components/FrontAboutme';
+import FrontPrice from '@/components/FrontPrice';
 
 
 export default function Home() {
@@ -28,7 +32,18 @@ export default function Home() {
 
   fetchAndPrintSession();
   return (
-    <div>
+    <>
+    <div className='w-full bg-primary dark:bg-black'><FrontHero /></div>
+    
+    <FrontFeatures />
+    <div className='w-full bg-[#e8cde5] dark:bg-black'><FrontStepper /></div>
+    <FrontAboutme />
+    <FrontPrice />
+    <ThemeSwitcher />
+
+    <div className='hidden'>
+      
+      
       <Send />
       <div id='sessionInfo'></div>
     <div>
@@ -36,7 +51,9 @@ export default function Home() {
       <p>{t("subtitle")}</p>
     </div>
     <User />
-
+    <Pricelist />
   </div>
+
+  </>
   )
 }

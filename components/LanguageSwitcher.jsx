@@ -33,7 +33,7 @@ const LanguageSwitcher = () => {
     setCurrent(current);
   }, []);
   return (
-    <div className="mt-2 flex justify-center items-center  w-12 m-2 h-12 rounded-full border dark:border-zinc-700 border-zinc-200 bg-white dark:bg-zinc-600/20 hover:dark:bg-zinc-600/40 hover:bg-zinc-100"> 
+    <div className="mt-2 flex justify-center items-center  w-10 m-2 h-10 rounded-full border dark:border-zinc-700 border-zinc-200 bg-white dark:bg-zinc-600/20 hover:dark:bg-zinc-600/40 hover:bg-zinc-100"> 
       
        <a href={linkPath} className='font-inter text-xl text-zinc-500 dark:text-zinc-200'>
         {current}
